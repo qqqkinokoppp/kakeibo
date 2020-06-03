@@ -1,0 +1,12 @@
+C:\Users\USER\source\repos\kakeibo\kakeibo\bin\Debug\kakeibo.exe.config
+C:\Users\USER\source\repos\kakeibo\kakeibo\bin\Debug\kakeibo.exe
+C:\Users\USER\source\repos\kakeibo\kakeibo\bin\Debug\kakeibo.pdb
+C:\Users\USER\source\repos\kakeibo\kakeibo\bin\Debug\kakeibo.xml
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.vbprojAssemblyReference.cache
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.Resources.resources
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.vbproj.GenerateResource.cache
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.exe
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.xml
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.pdb
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.LoginForm.resources
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.Form1.resources
