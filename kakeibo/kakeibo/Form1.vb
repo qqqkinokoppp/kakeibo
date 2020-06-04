@@ -101,6 +101,11 @@ Public Class Form1
         '今月のカレンダーを表示する
         Me.ShowCalender(year, month)
 
+        '支出ラベルに年月日の名前をつける
+        Me.expenseName(year, month)
+
+        Console.WriteLine(expense(0, 3).Name)
+
     End Sub
 
 
@@ -115,6 +120,9 @@ Public Class Form1
 
         'カレンダーの表示
         Me.ShowCalender(year, month)
+
+        '支出ラベルに年月日の名前をつける
+        Me.expenseName(year, month)
     End Sub
 
     '月のvalidatedイベント
@@ -127,6 +135,9 @@ Public Class Form1
 
         'カレンダーの表示
         Me.ShowCalender(year, month)
+
+        '支出ラベルに年月日の名前をつける
+        Me.expenseName(year, month)
     End Sub
 
     'カレンダー表示の関数
@@ -159,6 +170,49 @@ Public Class Form1
                 day(i, j).Text = ""
             Next
         Next
+    End Sub
+
+    '支出ラベルに日付の名前を付ける関数
+    '例：20200512,20201026のように日付をつけていく
+    Public Sub expenseName(year As Integer, month As Integer)
+        '月のついたちの曜日を取得
+        Dim firstDay As Date = New Date(year, month, 1)
+        Dim firstDayWeek As Integer = firstDay.DayOfWeek
+
+        Dim w As Integer = 0 ' 週
+        Dim dw As Integer = firstDayWeek ' 曜日 ( 0 〜 6 )
+        Dim d As Integer = 1 ' 日
+        Dim days As Integer = Date.DaysInMonth(year, month)
+
+        Do
+            If month < 10 Then
+                '月が10月より前の時
+                If d < 10 Then
+                    '日が１０日より前の時
+                    expense(w, dw).Name = year.ToString & "0" & month.ToString & "0" & d.ToString
+                Else
+                    '日が１０日以降の時
+                    expense(w, dw).Name = year.ToString & "0" & month.ToString & d.ToString
+                End If
+            Else
+                '月が１０月以降の時
+                If d < 10 Then
+                    '日が１０日より前の時
+                    expense(w, dw).Name = year.ToString & month.ToString & "0" & d.ToString
+                Else
+                    '日が１０日以降の時
+                    expense(w, dw).Name = year.ToString & month.ToString & d.ToString
+                End If
+            End If
+            d += 1
+            dw += 1
+            If 6 < dw Then
+                w += 1 ' 次の週
+                dw = 0 ' 日曜日
+            End If
+        Loop While d <= days
+
+
     End Sub
 
 End Class
