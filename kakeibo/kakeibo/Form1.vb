@@ -84,6 +84,7 @@ Public Class Form1
                     expense(i, j).ForeColor = Color.Blue
                 End If
                 Me.Controls.Add(expense(i, j))
+                AddHandler expense(i, j).Click, AddressOf Me.expenseClick
             Next
         Next
 
@@ -106,6 +107,8 @@ Public Class Form1
 
         Console.WriteLine(expense(0, 3).Name)
 
+
+
     End Sub
 
 
@@ -123,6 +126,11 @@ Public Class Form1
 
         '支出ラベルに年月日の名前をつける
         Me.expenseName(year, month)
+
+        '支出ラベルの背景色のクリア
+        Me.clearExpenseBackcolor()
+
+        Console.WriteLine(expense(0, 3).Name)
     End Sub
 
     '月のvalidatedイベント
@@ -138,6 +146,12 @@ Public Class Form1
 
         '支出ラベルに年月日の名前をつける
         Me.expenseName(year, month)
+
+        '支出ラベルの背景色のクリア
+        Me.clearExpenseBackcolor()
+
+
+        Console.WriteLine(expense(0, 3).Name)
     End Sub
 
     'カレンダー表示の関数
@@ -213,6 +227,21 @@ Public Class Form1
         Loop While d <= days
 
 
+    End Sub
+
+    '支出ラベルをクリックしたとき、背景色を変える関数
+    Private Sub expenseClick(sender As Object, e As EventArgs)
+        Dim label = CType(sender, Label)
+        label.BackColor = Color.Aqua
+    End Sub
+
+    '支出ラベルの背景色のクリア
+    Public Sub clearExpenseBackcolor()
+        For i = 0 To 5
+            For j = 0 To 6
+                expense(i, j).BackColor = SystemColors.Control
+            Next
+        Next
     End Sub
 
 End Class
