@@ -9,4 +9,5 @@ C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.exe
 C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.xml
 C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.pdb
 C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.LoginForm.resources
-C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.Form1.resources
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.fmMain.resources
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.fmInputShisyutu.resources
