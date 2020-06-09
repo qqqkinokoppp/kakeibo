@@ -1,5 +1,5 @@
 ﻿
-
+Imports MySql.Data.MySqlClient
 Public Class fmMain
 
     '日付のラベル配列の宣言
@@ -14,7 +14,39 @@ Public Class fmMain
     'カレンダー月
     Dim month As Integer
 
+
+    Dim conn As MySqlConnection
+    Dim cmd As MySqlCommand
+    Dim dr As MySqlDataReader
+
+    Dim connectionString As String
+    Dim sqlStr As String
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        '接続文字列
+        connectionString = "server=127.0.0.1;port=3307;Database=kakeibo;user id=root;password=1234"
+
+        'コネクション生成
+        conn = New MySqlConnection(connectionString)
+
+        '接続
+        conn.Open()
+
+        'SQL文
+        sqlStr = "SELECT * FROM expense"
+
+        'MySQLCommand作成
+        cmd = New MySqlCommand(sqlStr, conn)
+
+        'SQL文実行
+        dr = cmd.ExecuteReader
+
+        '結果を表示
+        While dr.Read()
+            Console.WriteLine(CStr(dr("expense")))
+        End While
+
 
         '曜日ラベルの上位置を日曜日のラベル基準にそろえる
         lblMon.Top = lblSun.Top
@@ -257,7 +289,7 @@ Public Class fmMain
 
 End Class
 
-Public Class program
+Public Class Program
     Shared Sub Main()
         Dim res As DialogResult
         'ログインダイアログを表示
