@@ -14,38 +14,38 @@ Public Class fmMain
     'カレンダー月
     Dim month As Integer
 
+    'DB接続のための変数宣言
+    Dim conn As MySqlConnection 'DB接続のインスタンス
+    Dim cmd As MySqlCommand 'SQL実行の準備のインスタンス
+    Dim dr As MySqlDataReader ''DBから取得したデータ
 
-    Dim conn As MySqlConnection
-    Dim cmd As MySqlCommand
-    Dim dr As MySqlDataReader
+    '接続文字列(定数)
+    Const connectionString As String = "server=127.0.0.1;port=3307;Database=kakeibo;user id=root;password=1234"
 
-    Dim connectionString As String
+    'SQL実行文
     Dim sqlStr As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        '接続文字列
-        connectionString = "server=127.0.0.1;port=3307;Database=kakeibo;user id=root;password=1234"
-
-        'コネクション生成
-        conn = New MySqlConnection(connectionString)
-
-        '接続
-        conn.Open()
+        Me.openDB()
 
         'SQL文
         sqlStr = "SELECT * FROM expense"
 
+        dr = Me.executeSQL(sqlStr)
+
+        Me.closeDB()
+
         'MySQLCommand作成
-        cmd = New MySqlCommand(sqlStr, conn)
+        'cmd = New MySqlCommand(sqlStr, conn)
 
         'SQL文実行
-        dr = cmd.ExecuteReader
+        'dr = cmd.ExecuteReader
 
         '結果を表示
-        While dr.Read()
-            Console.WriteLine(CStr(dr("expense")))
-        End While
+        ' While dr.Read()
+        'Console.WriteLine(CStr(dr("expense")))
+        'End While
 
 
         '曜日ラベルの上位置を日曜日のラベル基準にそろえる
@@ -286,6 +286,28 @@ Public Class fmMain
 
         fmInputShisyutu.ShowDialog()
     End Sub
+
+    '*************************************************************************************************
+    'DB関連関数
+
+    'DB接続の関数
+    Public Sub openDB()
+        conn = New MySqlConnection(connectionString)
+        conn.Open()
+    End Sub
+
+    'DB切断の関数
+    Public Sub closeDB()
+        conn.Close()
+    End Sub
+
+    'SQL実行
+    Public Function executeSQL(sqlStr As String)
+        cmd = New MySqlCommand(sqlStr, conn)
+        'SQL文実行
+        dr = cmd.ExecuteReader
+        Return dr
+    End Function
 
 End Class
 

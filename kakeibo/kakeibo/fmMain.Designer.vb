@@ -164,7 +164,7 @@ Partial Class fmMain
         Me.Label3.TabIndex = 13
         Me.Label3.Text = "Label3"
         '
-        'Form1
+        'fmMain
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
@@ -182,7 +182,8 @@ Partial Class fmMain
         Me.Controls.Add(Me.lblTue)
         Me.Controls.Add(Me.lblMon)
         Me.Controls.Add(Me.lblSun)
-        Me.Name = "Form1"
+        Me.IsMdiContainer = True
+        Me.Name = "fmMain"
         Me.Text = "家計簿（仮）"
         Me.ResumeLayout(False)
         Me.PerformLayout()
