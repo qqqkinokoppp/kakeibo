@@ -34,6 +34,11 @@ Partial Class fmMain
         Me.cmbYear = New System.Windows.Forms.ComboBox()
         Me.cmbMonth = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.メニューToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.目標金額変更ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ログアウトToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblSun
@@ -41,7 +46,7 @@ Partial Class fmMain
         Me.lblSun.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblSun.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.lblSun.ForeColor = System.Drawing.Color.Red
-        Me.lblSun.Location = New System.Drawing.Point(199, 75)
+        Me.lblSun.Location = New System.Drawing.Point(204, 101)
         Me.lblSun.Name = "lblSun"
         Me.lblSun.Size = New System.Drawing.Size(80, 30)
         Me.lblSun.TabIndex = 0
@@ -52,7 +57,7 @@ Partial Class fmMain
         '
         Me.lblMon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblMon.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.lblMon.Location = New System.Drawing.Point(285, 75)
+        Me.lblMon.Location = New System.Drawing.Point(290, 101)
         Me.lblMon.Name = "lblMon"
         Me.lblMon.Size = New System.Drawing.Size(80, 30)
         Me.lblMon.TabIndex = 1
@@ -63,7 +68,7 @@ Partial Class fmMain
         '
         Me.lblTue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblTue.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.lblTue.Location = New System.Drawing.Point(371, 75)
+        Me.lblTue.Location = New System.Drawing.Point(376, 101)
         Me.lblTue.Name = "lblTue"
         Me.lblTue.Size = New System.Drawing.Size(80, 30)
         Me.lblTue.TabIndex = 2
@@ -74,7 +79,7 @@ Partial Class fmMain
         '
         Me.lblWed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblWed.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.lblWed.Location = New System.Drawing.Point(457, 75)
+        Me.lblWed.Location = New System.Drawing.Point(462, 101)
         Me.lblWed.Name = "lblWed"
         Me.lblWed.Size = New System.Drawing.Size(80, 30)
         Me.lblWed.TabIndex = 3
@@ -85,7 +90,7 @@ Partial Class fmMain
         '
         Me.lblThu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblThu.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.lblThu.Location = New System.Drawing.Point(543, 75)
+        Me.lblThu.Location = New System.Drawing.Point(548, 101)
         Me.lblThu.Name = "lblThu"
         Me.lblThu.Size = New System.Drawing.Size(80, 30)
         Me.lblThu.TabIndex = 4
@@ -96,7 +101,7 @@ Partial Class fmMain
         '
         Me.lblFri.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblFri.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.lblFri.Location = New System.Drawing.Point(629, 75)
+        Me.lblFri.Location = New System.Drawing.Point(634, 101)
         Me.lblFri.Name = "lblFri"
         Me.lblFri.Size = New System.Drawing.Size(80, 30)
         Me.lblFri.TabIndex = 5
@@ -108,7 +113,7 @@ Partial Class fmMain
         Me.lblSat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblSat.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.lblSat.ForeColor = System.Drawing.Color.Blue
-        Me.lblSat.Location = New System.Drawing.Point(715, 75)
+        Me.lblSat.Location = New System.Drawing.Point(720, 101)
         Me.lblSat.Name = "lblSat"
         Me.lblSat.Size = New System.Drawing.Size(80, 30)
         Me.lblSat.TabIndex = 6
@@ -119,7 +124,7 @@ Partial Class fmMain
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(473, 29)
+        Me.Label1.Location = New System.Drawing.Point(478, 55)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(24, 16)
         Me.Label1.TabIndex = 9
@@ -129,7 +134,7 @@ Partial Class fmMain
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label2.Location = New System.Drawing.Point(623, 28)
+        Me.Label2.Location = New System.Drawing.Point(628, 54)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(24, 16)
         Me.Label2.TabIndex = 10
@@ -140,7 +145,7 @@ Partial Class fmMain
         Me.cmbYear.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.cmbYear.FormattingEnabled = True
         Me.cmbYear.Items.AddRange(New Object() {"2020", "2021", "2022", "2023"})
-        Me.cmbYear.Location = New System.Drawing.Point(346, 21)
+        Me.cmbYear.Location = New System.Drawing.Point(351, 47)
         Me.cmbYear.Name = "cmbYear"
         Me.cmbYear.Size = New System.Drawing.Size(121, 24)
         Me.cmbYear.TabIndex = 11
@@ -150,7 +155,7 @@ Partial Class fmMain
         Me.cmbMonth.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.cmbMonth.FormattingEnabled = True
         Me.cmbMonth.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"})
-        Me.cmbMonth.Location = New System.Drawing.Point(498, 21)
+        Me.cmbMonth.Location = New System.Drawing.Point(503, 47)
         Me.cmbMonth.Name = "cmbMonth"
         Me.cmbMonth.Size = New System.Drawing.Size(121, 24)
         Me.cmbMonth.TabIndex = 12
@@ -163,6 +168,34 @@ Partial Class fmMain
         Me.Label3.Size = New System.Drawing.Size(38, 12)
         Me.Label3.TabIndex = 13
         Me.Label3.Text = "Label3"
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.メニューToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(997, 29)
+        Me.MenuStrip1.TabIndex = 14
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'メニューToolStripMenuItem
+        '
+        Me.メニューToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.目標金額変更ToolStripMenuItem, Me.ログアウトToolStripMenuItem})
+        Me.メニューToolStripMenuItem.Name = "メニューToolStripMenuItem"
+        Me.メニューToolStripMenuItem.Size = New System.Drawing.Size(65, 25)
+        Me.メニューToolStripMenuItem.Text = "メニュー"
+        '
+        '目標金額変更ToolStripMenuItem
+        '
+        Me.目標金額変更ToolStripMenuItem.Name = "目標金額変更ToolStripMenuItem"
+        Me.目標金額変更ToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.目標金額変更ToolStripMenuItem.Text = "目標金額変更"
+        '
+        'ログアウトToolStripMenuItem
+        '
+        Me.ログアウトToolStripMenuItem.Name = "ログアウトToolStripMenuItem"
+        Me.ログアウトToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.ログアウトToolStripMenuItem.Text = "ログアウト"
         '
         'fmMain
         '
@@ -182,9 +215,12 @@ Partial Class fmMain
         Me.Controls.Add(Me.lblTue)
         Me.Controls.Add(Me.lblMon)
         Me.Controls.Add(Me.lblSun)
-        Me.IsMdiContainer = True
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "fmMain"
         Me.Text = "家計簿（仮）"
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -202,4 +238,8 @@ Partial Class fmMain
     Friend WithEvents cmbYear As ComboBox
     Friend WithEvents cmbMonth As ComboBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents メニューToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 目標金額変更ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ログアウトToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -77,6 +77,8 @@ Public Class LoginForm
         conn.Close()
     End Sub
 
+
+
     'SQLé¿çs
     'Public Function executeSQL(sqlStr As String)
     '    cmd = New MySqlCommand(sqlStr, conn)

@@ -38,15 +38,19 @@ Partial Class LoginForm
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.btnLogin = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.メニューToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.新規登録ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'LogoPictureBox
         '
         Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
-        Me.LogoPictureBox.Location = New System.Drawing.Point(0, 0)
+        Me.LogoPictureBox.Location = New System.Drawing.Point(0, 32)
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(165, 193)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(166, 161)
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
         '
@@ -100,6 +104,28 @@ Partial Class LoginForm
         Me.Cancel.TabIndex = 5
         Me.Cancel.Text = "キャンセル(&C)"
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.メニューToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(401, 29)
+        Me.MenuStrip1.TabIndex = 6
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'メニューToolStripMenuItem
+        '
+        Me.メニューToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.新規登録ToolStripMenuItem})
+        Me.メニューToolStripMenuItem.Name = "メニューToolStripMenuItem"
+        Me.メニューToolStripMenuItem.Size = New System.Drawing.Size(65, 25)
+        Me.メニューToolStripMenuItem.Text = "メニュー"
+        '
+        '新規登録ToolStripMenuItem
+        '
+        Me.新規登録ToolStripMenuItem.Name = "新規登録ToolStripMenuItem"
+        Me.新規登録ToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
+        Me.新規登録ToolStripMenuItem.Text = "新規登録"
+        '
         'LoginForm
         '
         Me.AcceptButton = Me.btnLogin
@@ -114,7 +140,9 @@ Partial Class LoginForm
         Me.Controls.Add(Me.PasswordLabel)
         Me.Controls.Add(Me.UsernameLabel)
         Me.Controls.Add(Me.LogoPictureBox)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "LoginForm"
@@ -122,9 +150,14 @@ Partial Class LoginForm
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "LoginForm"
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents メニューToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents 新規登録ToolStripMenuItem As ToolStripMenuItem
 End Class
