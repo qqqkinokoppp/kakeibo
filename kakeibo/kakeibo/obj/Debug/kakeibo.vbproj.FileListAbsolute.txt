@@ -35,3 +35,4 @@ C:\Users\USER\source\repos\kakeibo\kakeibo\bin\Debug\System.Memory.xml
 C:\Users\USER\source\repos\kakeibo\kakeibo\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\USER\source\repos\kakeibo\kakeibo\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.vbproj.CopyComplete
+C:\Users\USER\source\repos\kakeibo\kakeibo\obj\Debug\kakeibo.fmRegistration.resources

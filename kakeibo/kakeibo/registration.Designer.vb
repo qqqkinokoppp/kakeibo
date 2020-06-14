@@ -32,6 +32,7 @@ Partial Class fmRegistration
         Me.txtMokuhyo = New System.Windows.Forms.TextBox()
         Me.btnRegistration = New System.Windows.Forms.Button()
         Me.txtCancel = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -70,9 +71,9 @@ Partial Class fmRegistration
         Me.Label4.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.Label4.Location = New System.Drawing.Point(52, 197)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(72, 16)
+        Me.Label4.Size = New System.Drawing.Size(80, 16)
         Me.Label4.TabIndex = 3
-        Me.Label4.Text = "目標金額"
+        Me.Label4.Text = "目標金額:"
         '
         'txtUserName
         '
@@ -126,11 +127,22 @@ Partial Class fmRegistration
         Me.txtCancel.Text = "キャンセル"
         Me.txtCancel.UseVisualStyleBackColor = True
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("ＭＳ ゴシック", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.Label5.Location = New System.Drawing.Point(310, 197)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(24, 16)
+        Me.Label5.TabIndex = 10
+        Me.Label5.Text = "円"
+        '
         'fmRegistration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(365, 293)
+        Me.ClientSize = New System.Drawing.Size(402, 293)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtCancel)
         Me.Controls.Add(Me.btnRegistration)
         Me.Controls.Add(Me.txtMokuhyo)
@@ -158,4 +170,5 @@ Partial Class fmRegistration
     Friend WithEvents txtMokuhyo As TextBox
     Friend WithEvents btnRegistration As Button
     Friend WithEvents txtCancel As Button
+    Friend WithEvents Label5 As Label
 End Class

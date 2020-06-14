@@ -1,5 +1,6 @@
 ﻿
 Imports MySql.Data.MySqlClient
+Imports clsDB
 Public Class fmMain
 
     '日付のラベル配列の宣言
@@ -15,26 +16,31 @@ Public Class fmMain
     Dim month As Integer
 
     'DB接続のための変数宣言
-    Dim conn As MySqlConnection 'DB接続のインスタンス
-    Dim cmd As MySqlCommand 'SQL実行の準備のインスタンス
-    Dim dr As MySqlDataReader ''DBから取得したデータ
+    'Dim conn As MySqlConnection 'DB接続のインスタンス
+    'Dim cmd As MySqlCommand 'SQL実行の準備のインスタンス
+    'Dim dr As MySqlDataReader ''DBから取得したデータ
 
     '接続文字列(定数)
-    Const connectionString As String = "server=127.0.0.1;port=3307;Database=kakeibo;user id=root;password=1234"
+    'Const connectionString As String = "server=127.0.0.1;port=3307;Database=kakeibo;user id=root;password=1234"
 
     'SQL実行文
-    Dim sqlStr As String
+    'Dim sqlStr As String
+
+    'clsDBのインスタンスを格納する変数
+    Dim db As clsDB
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.openDB()
+        db = New clsDB
+
+        db.openDB()
 
         'SQL文
-        sqlStr = "SELECT * FROM expense"
+        db.sqlStr = "SELECT * FROM expense"
 
-        dr = Me.executeSQL(sqlStr)
+        db.dr = db.executeSQL(db.sqlStr)
 
-        Me.closeDB()
+        db.closeDB()
 
         'MySQLCommand作成
         'cmd = New MySqlCommand(sqlStr, conn)
@@ -264,6 +270,7 @@ Public Class fmMain
 
     '支出ラベルをクリックしたとき、背景色を変える関数
     Private Sub expenseClick(sender As Object, e As EventArgs)
+        Me.clearExpenseBackcolor()
         Dim label = CType(sender, Label)
         label.BackColor = Color.Aqua
     End Sub
@@ -292,21 +299,21 @@ Public Class fmMain
 
     'DB接続の関数
     Public Sub openDB()
-        conn = New MySqlConnection(connectionString)
-        conn.Open()
+        db.conn = New MySqlConnection(db.connectionString)
+        db.conn.Open()
     End Sub
 
     'DB切断の関数
     Public Sub closeDB()
-        conn.Close()
+        db.conn.Close()
     End Sub
 
     'SQL実行
     Public Function executeSQL(sqlStr As String)
-        cmd = New MySqlCommand(sqlStr, conn)
+        db.cmd = New MySqlCommand(sqlStr, db.conn)
         'SQL文実行
-        dr = cmd.ExecuteReader
-        Return dr
+        db.dr = db.cmd.ExecuteReader
+        Return db.dr
     End Function
 
 End Class

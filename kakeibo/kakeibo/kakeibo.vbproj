@@ -121,6 +121,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsDB.vb" />
     <Compile Include="fmMain.vb">
       <SubType>Form</SubType>
     </Compile>
