@@ -38,7 +38,7 @@ Public Class LoginForm
 
         db = New clsDB
 
-        Me.openDB()
+        db.openDB()
         'sqlStr = "SELECT id, user_name, name FROM kakeibo.user WHERE user_name = @user_name AND password = @password"
 
         db.cmd = New MySqlCommand()

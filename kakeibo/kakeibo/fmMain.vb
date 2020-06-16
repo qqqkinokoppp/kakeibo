@@ -285,14 +285,15 @@ Public Class fmMain
     End Sub
 
     '支出ラベルをダブルクリックしたとき、支出入力フォームを立ち上げる
-    Private Sub expenseDoubleClick(sender As Object, e As EventArgs)
+    Private Function expenseDoubleClick(sender As Object, e As EventArgs)
         Dim label = CType(sender, Label)
         Dim value As String = label.Name.ToString
         value = value.Substring(0, 4) & "/" & value.Substring(4, 2) & "/" & value.Substring(6, 2)
         fmInputShisyutu.lblDate.Text = value
 
         fmInputShisyutu.ShowDialog()
-    End Sub
+        Return label.Name
+    End Function
 
     '*************************************************************************************************
     'DB関連関数
