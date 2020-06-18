@@ -9,6 +9,11 @@ Public Class fmInputShisyutu
     Dim dtExpense As DataTable
 
     Private Sub fmInputShisyutu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'fmMainからの値取得
+        Dim str As String = CType(Me.Owner, fmMain).value.ToString
+        lblDate.Text = str
+
         'ロードイベントでその日の支出一覧とカテゴリ一覧をロード
         db = New clsDB
         db.openDB()
@@ -53,4 +58,6 @@ Public Class fmInputShisyutu
         'Console.WriteLine("1")
 
     End Sub
+
+
 End Class

@@ -15,6 +15,8 @@ Public Class fmMain
     'カレンダー月
     Dim month As Integer
 
+    Public value As String
+
     'DB接続のための変数宣言
     'Dim conn As MySqlConnection 'DB接続のインスタンス
     'Dim cmd As MySqlCommand 'SQL実行の準備のインスタンス
@@ -285,14 +287,23 @@ Public Class fmMain
     End Sub
 
     '支出ラベルをダブルクリックしたとき、支出入力フォームを立ち上げる
-    Private Function expenseDoubleClick(sender As Object, e As EventArgs)
-        Dim label = CType(sender, Label)
-        Dim value As String = label.Name.ToString
-        value = value.Substring(0, 4) & "/" & value.Substring(4, 2) & "/" & value.Substring(6, 2)
-        fmInputShisyutu.lblDate.Text = value
+    Public Function expenseDoubleClick(sender As Object, e As EventArgs)
 
-        fmInputShisyutu.ShowDialog()
-        Return label.Name
+        Dim label = CType(sender, Label)
+        value = label.Name.ToString
+
+        Dim f As New fmInputShisyutu
+        f.Owner = Me
+
+        f.ShowDialog(Me)
+
+        'Dim label = CType(sender, Label)
+        'Dim value As String = label.Name.ToString
+        'value = value.Substring(0, 4) & "/" & value.Substring(4, 2) & "/" & value.Substring(6, 2)
+        'fmInputShisyutu.lblDate.Text = value
+
+        'fmInputShisyutu.ShowDialog()
+        'Return label.Name
     End Function
 
     '*************************************************************************************************
