@@ -129,7 +129,7 @@ Partial Class fmInputShisyutu
         Me.dgvExpense.Location = New System.Drawing.Point(106, 60)
         Me.dgvExpense.Name = "dgvExpense"
         Me.dgvExpense.RowTemplate.Height = 21
-        Me.dgvExpense.Size = New System.Drawing.Size(314, 150)
+        Me.dgvExpense.Size = New System.Drawing.Size(343, 155)
         Me.dgvExpense.TabIndex = 9
         '
         'btnModify
