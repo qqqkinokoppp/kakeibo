@@ -37,7 +37,8 @@ Public Class fmInputShisyutu
         db.cmd.CommandText += " expense,"
         db.cmd.CommandText += " category,"
         db.cmd.CommandText += " expense.is_deleted,"
-        db.cmd.CommandText += " expense.id"
+        db.cmd.CommandText += " expense.id,"
+        db.cmd.CommandText += " category_id"
         db.cmd.CommandText += " FROM"
         db.cmd.CommandText += " kakeibo.expense"
         db.cmd.CommandText += " JOIN"
@@ -62,6 +63,7 @@ Public Class fmInputShisyutu
         '支出DGVのデザイン
         dgvExpense.Columns(2).Visible = False
         dgvExpense.Columns(3).Visible = False
+        dgvExpense.Columns(4).Visible = False
 
         dgvExpense.Columns(0).HeaderText = "支出"
         dgvExpense.Columns(1).HeaderText = "カテゴリ"
@@ -90,12 +92,34 @@ Public Class fmInputShisyutu
 
     '変更ボタンクリックでDB更新
     Private Sub btnModify_Click(sender As Object, e As EventArgs) Handles btnModify.Click
+        '選択されているDGVのidに該当するDTを更新する
+        'Dim id As Integer
+        'id = dgvExpense.CurrentRow.Cells("id").Value
+        'dgvExpense.CurrentRow.Cells("expense").Value = txtExpense.Text
+        'dgvExpense.CurrentRow.Cells("category_id").Value = cmbCategory.SelectedValue
+
+        db = New clsDB
+        db.openDB()
+        db.cmd = New MySqlCommand
+        db.cmd.CommandText = ""
+        db.cmd.CommandText += "UPDATE"
+        db.cmd.CommandText += " kaiibo.expense"
+        db.cmd.CommandText += " SET"
+        db.cmd.CommandText += " user_id=@user_id,"
+        db.cmd.CommandText += " date=@date,"
+        db.cmd.CommandText += " expense=@expense,"
+        db.cmd.CommandText += " category_id=@category_id"
+        db.cmd.CommandText += " WHERE"
+        db.cmd.CommandText += " id=@id"
+
+
 
     End Sub
 
     'DGVのセルをダブルクリックで値を取得して、表示
     Private Sub selectExpense(sender As Object, e As DataGridViewCellEventArgs) Handles dgvExpense.CellDoubleClick
         cmbCategory.Text = dgvExpense.CurrentRow.Cells(1).Value.ToString
+
         txtExpense.Text = dgvExpense.CurrentRow.Cells(0).Value.ToString
     End Sub
 End Class

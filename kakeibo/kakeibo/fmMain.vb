@@ -15,6 +15,9 @@ Public Class fmMain
     'カレンダー月
     Dim month As Integer
 
+    '支出一覧のデータテーブル
+    Dim dtExpenseCalender As DataTable
+
     Public value As String
 
     'DB接続のための変数宣言
@@ -33,14 +36,35 @@ Public Class fmMain
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'ログインフォームから取得したユーザーID
+        Dim user_id As String = CType(Me.Owner, LoginForm).user_id.ToString
+
         db = New clsDB
 
         db.openDB()
+        db.cmd = New MySqlCommand
 
         'SQL文
-        db.sqlStr = "SELECT * FROM expense"
+        'expenseテーブルをdateで集計
+        db.cmd.CommandText = ""
+        db.cmd.CommandText += "SELECT"
+        db.cmd.CommandText += " SUM(expense),"
+        db.cmd.CommandText += " id,"
+        db.cmd.CommandText += " date"
+        db.cmd.CommandText += " FROM"
+        db.cmd.CommandText += " expense"
+        db.cmd.CommandText += " WHERE"
+        db.cmd.CommandText += " user_id=@user_id"
+        db.cmd.CommandText += " GROUP BY"
+        db.cmd.CommandText += " date"
 
-        db.dr = db.executeSQL(db.sqlStr)
+        db.cmd.Parameters.AddWithValue("@user_id", user_id)
+
+        db.cmd.Connection = db.conn
+
+        db.dr = db.cmd.ExecuteReader()
+        dtExpenseCalender = New DataTable
+        dtExpenseCalender.Load(db.dr)
 
         db.closeDB()
 
@@ -146,12 +170,17 @@ Public Class fmMain
         '支出ラベルに年月日の名前をつける
         Me.expenseName(year, month)
 
-        Console.WriteLine(expense(0, 3).Name)
+        For Each row As DataRow In dtExpenseCalender.Rows
+            For Each expenseName As Label In expense
+                If row("date") = expenseName.Name Then
+                    expenseName.Text = row("SUM(expense)").ToString
+                End If
+            Next
+        Next
 
-
+        'Console.WriteLine(expense(0, 3).Name)
 
     End Sub
-
 
 
     '年のvalidatedイベント
@@ -266,8 +295,6 @@ Public Class fmMain
                 dw = 0 ' 日曜日
             End If
         Loop While d <= days
-
-
     End Sub
 
     '支出ラベルをクリックしたとき、背景色を変える関数

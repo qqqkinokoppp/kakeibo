@@ -3,6 +3,7 @@ Imports clsDB
 Public Class LoginForm
 
     Dim userName As String
+    Public user_id As Integer
     Dim password As String
 
     'clsDBのインスタンスを格納する変数
@@ -56,10 +57,16 @@ Public Class LoginForm
         dt = New DataTable
         dt.Load(db.dr)
 
+        'メインフォームに共有するユーザーIDを変数に格納
+        user_id = dt.Rows(0)(0)
+
+        Dim f As New fmMain
+        f.Owner = Me
+
         If dt.Rows.Count = 0 Then
             MsgBox("パスワードとユーザー名が一致しません。")
         Else
-            fmMain.Show()
+            fmMain.ShowDialog(Me)
         End If
 
     End Sub
