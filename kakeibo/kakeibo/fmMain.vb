@@ -18,6 +18,15 @@ Public Class fmMain
     '支出一覧のデータテーブル
     Dim dtExpenseCalender As DataTable
 
+    '目標のデータテーブル
+    Dim dtMokuhyo As DataTable
+
+    '残金
+    Dim zankin As Integer
+
+    'ユーザーID
+    Public user_id As String
+
     Public value As String
 
     'DB接続のための変数宣言
@@ -37,7 +46,7 @@ Public Class fmMain
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'ログインフォームから取得したユーザーID
-        Dim user_id As String = CType(Me.Owner, LoginForm).user_id.ToString
+        user_id = CType(Me.Owner, LoginForm).user_id.ToString
 
         db = New clsDB
 
@@ -65,6 +74,34 @@ Public Class fmMain
         db.dr = db.cmd.ExecuteReader()
         dtExpenseCalender = New DataTable
         dtExpenseCalender.Load(db.dr)
+
+        '目標金額、ユーザー名の取得
+
+        db.cmd.CommandText = ""
+        db.cmd.CommandText += "SELECT"
+        db.cmd.CommandText += " mokuhyo.mokuhyo,"
+        db.cmd.CommandText += " user.name"
+        db.cmd.CommandText += " FROM"
+        db.cmd.CommandText += " mokuhyo"
+        db.cmd.CommandText += " JOIN"
+        db.cmd.CommandText += " user"
+        db.cmd.CommandText += " ON"
+        db.cmd.CommandText += " user.id=mokuhyo.user_id"
+        db.cmd.CommandText += " WHERE"
+        db.cmd.CommandText += " user.id=@user_id"
+        db.cmd.CommandText += " AND"
+        db.cmd.CommandText += " mokuhyo.is_deleted=0"
+
+        'db.cmd.Parameters.AddWithValue("@user_id", user_id)
+
+        db.cmd.Connection = db.conn
+        db.dr = db.cmd.ExecuteReader()
+
+        dtMokuhyo = New DataTable
+        dtMokuhyo.Load(db.dr)
+
+        'フォームのタイトル
+        Me.Text = dtMokuhyo.Rows(0)(1).ToString & "さんの一か月" & dtMokuhyo.Rows(0)(0).ToString & "円チャレンジ"
 
         db.closeDB()
 
@@ -170,6 +207,7 @@ Public Class fmMain
         '支出ラベルに年月日の名前をつける
         Me.expenseName(year, month)
 
+        '支出の集計をカレンダーに表示
         For Each row As DataRow In dtExpenseCalender.Rows
             For Each expenseName As Label In expense
                 If row("date") = expenseName.Name Then
@@ -177,6 +215,15 @@ Public Class fmMain
                 End If
             Next
         Next
+
+        zankin = dtMokuhyo.Rows(0)(0)
+        '残金計算
+        For Each row As DataRow In dtExpenseCalender.Rows
+            zankin -= row("SUM(expense)")
+        Next
+
+        '残金ラベルに残金を表示
+        lblZankin.Text = zankin.ToString & "円"
 
         'Console.WriteLine(expense(0, 3).Name)
 

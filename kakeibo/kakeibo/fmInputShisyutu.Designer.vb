@@ -81,7 +81,7 @@ Partial Class fmInputShisyutu
         Me.btnOK.Name = "btnOK"
         Me.btnOK.Size = New System.Drawing.Size(75, 23)
         Me.btnOK.TabIndex = 4
-        Me.btnOK.Text = "OK"
+        Me.btnOK.Text = "登録"
         Me.btnOK.UseVisualStyleBackColor = True
         '
         'btnCancel
