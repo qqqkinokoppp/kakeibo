@@ -20,8 +20,6 @@ Public Class fmInputShisyutu
     '日付
     Dim expenseDate As String
 
-
-
     Private Sub fmInputShisyutu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'fmMainからの値取得
@@ -247,6 +245,15 @@ Public Class fmInputShisyutu
                 dgvExpense.Rows(i).DefaultCellStyle.BackColor = Color.Coral
             End If
         Next
+
+    End Sub
+
+    '閉じるボタンクリック時、メインフォームのロードイベントを呼び出す
+    Private Sub clickExit(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Dim f As New fmMain
+        f.load_fmMain()
+
+        Me.Dispose()
 
     End Sub
 End Class

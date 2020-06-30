@@ -45,6 +45,10 @@ Public Class fmMain
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        If Me.Owner Is Nothing Then
+            Me.Owner = LoginForm
+        End If
+
         'ログインフォームから取得したユーザーID
         user_id = CType(Me.Owner, LoginForm).user_id.ToString
 
@@ -216,11 +220,16 @@ Public Class fmMain
             Next
         Next
 
+        Console.WriteLine(expense(0, 2).Text)
+
         zankin = dtMokuhyo.Rows(0)(0)
+
         '残金計算
         For Each row As DataRow In dtExpenseCalender.Rows
             zankin -= row("SUM(expense)")
         Next
+
+        Console.WriteLine(zankin)
 
         '残金ラベルに残金を表示
         lblZankin.Text = zankin.ToString & "円"
@@ -370,6 +379,7 @@ Public Class fmMain
         f.Owner = Me
 
         f.ShowDialog(Me)
+        f.Dispose()
 
         'Dim label = CType(sender, Label)
         'Dim value As String = label.Name.ToString
@@ -379,6 +389,41 @@ Public Class fmMain
         'fmInputShisyutu.ShowDialog()
         'Return label.Name
     End Function
+
+    'フォームのロードイベントを呼び出すメソッド
+    Public Sub load_fmMain()
+        Form1_Load(Me, Nothing)
+    End Sub
+
+    '支出ラベルの再ロード
+    Public Sub reload_Expense(user_id As Integer)
+        db = New clsDB
+
+        db.openDB()
+        db.cmd = New MySqlCommand
+
+        'SQL文
+        'expenseテーブルをdateで集計
+        db.cmd.CommandText = ""
+        db.cmd.CommandText += "SELECT"
+        db.cmd.CommandText += " SUM(expense),"
+        db.cmd.CommandText += " id,"
+        db.cmd.CommandText += " date"
+        db.cmd.CommandText += " FROM"
+        db.cmd.CommandText += " expense"
+        db.cmd.CommandText += " WHERE"
+        db.cmd.CommandText += " user_id=@user_id"
+        db.cmd.CommandText += " GROUP BY"
+        db.cmd.CommandText += " date"
+
+        db.cmd.Parameters.AddWithValue("@user_id", user_id)
+
+        db.cmd.Connection = db.conn
+
+        db.dr = db.cmd.ExecuteReader()
+        dtExpenseCalender = New DataTable
+        dtExpenseCalender.Load(db.dr)
+    End Sub
 
     '*************************************************************************************************
     'DB関連関数
@@ -410,6 +455,6 @@ Public Class Program
         'ログインダイアログを表示
         Dim f1 As New LoginForm
         res = f1.ShowDialog()
-        f1.Dispose()
+        f1.Close()
     End Sub
 End Class

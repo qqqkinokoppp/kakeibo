@@ -40,7 +40,7 @@ Partial Class LoginForm
         Me.Cancel = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.メニューToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.新規登録ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tabRegistration = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -115,16 +115,16 @@ Partial Class LoginForm
         '
         'メニューToolStripMenuItem
         '
-        Me.メニューToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.新規登録ToolStripMenuItem})
+        Me.メニューToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tabRegistration})
         Me.メニューToolStripMenuItem.Name = "メニューToolStripMenuItem"
         Me.メニューToolStripMenuItem.Size = New System.Drawing.Size(65, 25)
         Me.メニューToolStripMenuItem.Text = "メニュー"
         '
-        '新規登録ToolStripMenuItem
+        'tabRegistration
         '
-        Me.新規登録ToolStripMenuItem.Name = "新規登録ToolStripMenuItem"
-        Me.新規登録ToolStripMenuItem.Size = New System.Drawing.Size(180, 26)
-        Me.新規登録ToolStripMenuItem.Text = "新規登録"
+        Me.tabRegistration.Name = "tabRegistration"
+        Me.tabRegistration.Size = New System.Drawing.Size(180, 26)
+        Me.tabRegistration.Text = "新規登録"
         '
         'LoginForm
         '
@@ -159,5 +159,5 @@ Partial Class LoginForm
 
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents メニューToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents 新規登録ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tabRegistration As ToolStripMenuItem
 End Class

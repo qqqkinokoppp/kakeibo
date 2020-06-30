@@ -1,5 +1,6 @@
 Imports MySql.Data.MySqlClient
 Imports clsDB
+
 Public Class LoginForm
 
     Dim userName As String
@@ -89,7 +90,9 @@ Public Class LoginForm
         db.conn.Close()
     End Sub
 
-
+    Private Sub tabRegistration_Click(sender As Object, e As EventArgs) Handles tabRegistration.Click
+        fmRegistration.ShowDialog()
+    End Sub
 
     'SQLé¿çs
     'Public Function executeSQL(sqlStr As String)

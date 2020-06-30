@@ -91,7 +91,7 @@ Partial Class fmInputShisyutu
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(104, 23)
         Me.btnCancel.TabIndex = 5
-        Me.btnCancel.Text = "キャンセル"
+        Me.btnCancel.Text = "閉じる"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'cmbCategory
